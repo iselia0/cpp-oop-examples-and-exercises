@@ -1,0 +1,42 @@
+# ---- Compiled binaries & object files ----
+*.exe
+*.out
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.pdb
+*.ilk
+*.dSYM/
+
+# Extensionless build output (g++ -o main / -o playground, common with these exercises)
+# Keep this list narrow so we never ignore a real extensionless source or asset.
+main
+playground
+a.out
+
+# ---- Editor / IDE ----
+.vscode/
+.idea/
+*.iml
+*.code-workspace
+tempCodeRunnerFile.cpp
+.clangd/
+compile_commands.json
+
+# ---- OS cruft ----
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ---- Build directories (CMake / Make, if added later) ----
+build/
+cmake-build-*/
+out/
