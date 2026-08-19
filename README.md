@@ -45,35 +45,43 @@ The tools and frameworks change. **The fundamental concepts don't.**
 3-POLYMORPHISM/                          virtual functions, abstract classes, static/dynamic binding
 ```
 
-Each lesson has its own `README.md` with a full topic list. The layout inside is the same
-everywhere:
+Every lesson follows the exact same layout. Here's what it looks like for real, using
+`2-INHERITANCE/` as a concrete example:
 
 ```
-N-TOPIC-NAME/
+2-INHERITANCE/
 ├── README.md
-├── images/                 # diagrams referenced at the top of this lesson's README.md
-│   └── some-diagram.png
+│     ↳ start here — topic list for this lesson, plus an overview diagram
+├── images/
+│   └── inheritance-types-overview.jpg
+│         ↳ diagrams shown at the top of README.md (not every lesson has these)
 ├── examples/
-│   ├── 01-first-subtopic/
-│   │   └── main.cpp        # supporting headers (person.h, ...) live alongside main.cpp
-│   ├── 02-second-subtopic/
+│   ├── 01-introduction-to-inheritance/
+│   │   └── main.cpp
+│   ├── 02-protected-members/
 │   │   └── main.cpp
 │   └── ...
+│         ↳ read these next, in numeric order — one folder per topic,
+│           worked code you can run as-is
 ├── homework/
-│   ├── homework-01-short-description.cpp   # single-file exercise
-│   ├── homework-02-short-description.cpp
+│   ├── homework-01-protected-members.cpp
+│   ├── homework-02-library-management-system.cpp
 │   └── ...
-└── playground.cpp          # scratch file for experimenting, not part of the curriculum
+│         ↳ then solve these, one at a time, in order — no solutions provided
+└── playground.cpp
+      ↳ a free scratch file for experimenting — overwrite it locally, it's not graded
 ```
 
-- **`images/`** — reference diagrams shown at the top of the lesson's `README.md` for a quick
-  visual overview before diving into the examples. Not every lesson needs one.
-- **`examples/`** — instructor-provided code demonstrating one concept each, numbered in
-  teaching order. Read these first, then attempt the homework.
-- **`homework/`** — exercises for students, provided without solutions. Each file name hints
-  at what the exercise is about (e.g. `homework-05-online-shop-system.cpp`).
-- **`playground.cpp`** — a free scratch file per lesson for trying things out. Feel free to
-  overwrite it locally; it's not graded content.
+`1-CLASSES-OBJECTS-AND-DATA-STRUCTURES/` and `3-POLYMORPHISM/` mirror this exact structure,
+just with different topics inside. Quick reference:
+
+| Folder / file | What's in it | What you do with it |
+|---|---|---|
+| `README.md` | The lesson's topic list, and a diagram if one exists | Read first |
+| `images/` | Diagrams referenced by `README.md` | Nothing — just context |
+| `examples/NN-topic/main.cpp` | Instructor-provided code, one concept per folder, in teaching order | Read it, run it, then move to homework |
+| `homework/homework-NN-*.cpp` | Exercises with no solutions given | Solve one at a time, in order |
+| `playground.cpp` | A free scratch file, not part of the curriculum | Overwrite freely while experimenting |
 
 ## Setup and Requirements
 
