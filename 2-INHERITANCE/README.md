@@ -1,4 +1,4 @@
-# 17 — Inheritance
+# 2 — Inheritance
 
 ![The five kinds of inheritance: single, multiple, hierarchical, multilevel, hybrid](images/inheritance-types-overview.jpg)
 

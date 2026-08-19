@@ -1,4 +1,4 @@
-# 18 — Polymorphism
+# 3 — Polymorphism
 
 ![Polymorphism splits into compile-time (function/operator overloading) and run-time (function overriding)](images/polymorphism-types-overview.png)
 

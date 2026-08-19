@@ -1,4 +1,4 @@
-# 16 — Classes, Objects & Data Structures
+# 1 — Classes, Objects & Data Structures
 
 ![OOPs: Object-Oriented Programming System — abstraction, encapsulation, polymorphism, inheritance, class, object](images/oop-pillars-3d.png)
 
