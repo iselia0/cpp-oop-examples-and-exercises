@@ -75,19 +75,6 @@ N-TOPIC-NAME/
 - **`playground.cpp`** — a free scratch file per lesson for trying things out. Feel free to
   overwrite it locally; it's not graded content.
 
-### Naming conventions
-
-- The three top-level lesson folders are `N-UPPER-CASE-NAME` (`1-CLASSES-OBJECTS-AND-DATA-STRUCTURES`,
-  `2-INHERITANCE`, `3-POLYMORPHISM`) so they stand out as the main sections of the guide at a glance.
-  Everything inside a lesson (`examples/`, `homework/`, file names) stays `kebab-case`.
-- Inside a lesson, numeric prefixes are zero-padded (`01`, `02`, … `10`) so they always sort correctly.
-- Homework numbers follow the original exercise numbering — if a number is missing (e.g.
-  lesson 3 has no homework 13), that exercise was never assigned; it isn't a mistake.
-- A topic folder with a single source file names it `main.cpp`; multi-file topics keep the
-  class name as the file name (e.g. `cylinder.h`, `Order.cpp`).
-- Images in an `images/` folder are named for what they show, not their source
-  (e.g. `inheritance-types-overview.jpg`, not `inheritance.jpg` or `IMG_0231.jpg`).
-
 ## Setup and Requirements
 
 ### What is Git?
@@ -106,13 +93,86 @@ GitHub hosts Git repositories in the cloud and adds collaboration tools:
 - Pull requests and code review.
 - Issue tracking and an online portfolio.
 
+### What is a fork?
+
+A fork is your own personal copy of someone else's repository, created on GitHub with one click.
+It lives under your own account and is completely independent — you can edit, commit, and push
+to it freely without touching the original.
+
+**Why fork?** You don't have write access to this repo. Forking gives you a copy you fully own,
+so you have somewhere to save your homework solutions as commits.
+
+### What is a clone?
+
+Cloning downloads a copy of a repository from GitHub onto your own computer, so you have real
+files on disk you can open in an editor, compile, and run.
+
+**Why clone?** A fork only exists on GitHub's servers. You need a local copy to actually write
+and test code — cloning creates that local copy and wires it up (as `origin`) so you can push
+your changes back to your fork.
+
 ### A C++ compiler
 
-Any C++17-capable compiler works — GCC (`g++`), Clang, or MSVC. Examples below use `g++`.
+Any C++17-capable compiler works. Examples below use `g++`, but any option gets you there.
 
-- **macOS**: `xcode-select --install` (installs Clang/`g++` via Xcode Command Line Tools)
-- **Windows**: install [MSYS2](https://www.msys2.org/) or the [MinGW-w64](https://www.mingw-w64.org/) toolchain, or use WSL with the Ubuntu instructions below
-- **Ubuntu / Debian**: `sudo apt update && sudo apt install build-essential`
+**macOS**
+
+```bash
+xcode-select --install
+```
+
+This installs Clang (aliased as `g++`) via the Xcode Command Line Tools. Verify it worked:
+
+```bash
+g++ --version
+```
+
+**Windows — recommended: WSL (a real Linux environment inside Windows)**
+
+Open PowerShell **as Administrator** and run:
+
+```powershell
+wsl --install
+```
+
+Restart your computer when prompted, then open **Ubuntu** from the Start menu and follow the
+"Ubuntu / Debian" steps below inside it. This gets you the exact same commands as macOS/Linux
+users, with no PATH setup.
+
+**Windows — alternative: MSYS2 (native, no restart required)**
+
+In PowerShell:
+
+```powershell
+winget install -e --id MSYS2.MSYS2
+```
+
+Then open **MSYS2 UCRT64** from the Start menu and run:
+
+```bash
+pacman -Syu --noconfirm
+pacman -S --noconfirm mingw-w64-ucrt-x86_64-gcc
+```
+
+Add `C:\msys64\ucrt64\bin` to your `PATH` (Windows Settings → *Edit the system environment
+variables* → *Environment Variables* → edit `Path` → *New* → paste it in), then open a **new**
+terminal and verify:
+
+```powershell
+g++ --version
+```
+
+**Ubuntu / Debian**
+
+```bash
+sudo apt update && sudo apt install -y build-essential
+```
+
+Verify it worked:
+
+```bash
+g++ --version
+```
 
 ---
 
