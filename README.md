@@ -37,51 +37,50 @@ The tools and frameworks change. **The fundamental concepts don't.**
 
 **Learn the theory. Build the concepts. Practice the patterns. Master OOP.**
 
+## Learning Path
+
+The material is organized progressively — each lesson builds on the previous one.
+
+### [1. Classes, Objects & Data Structures →](./1-CLASSES-OBJECTS-AND-DATA-STRUCTURES/)
+
+**Start here.** The foundations everything else is built on:
+
+- Classes and objects
+- Constructors, including defaulted constructors
+- Encapsulation via setters and getters
+- Splitting a class across multiple files
+- The `->` pointer-call notation, the `this` pointer, and `struct` vs `class`
+- Destructors, and constructor/destructor order
+- Practical data structures (homework): linked list, stack, queue, binary search tree
+
+### [2. Inheritance →](./2-INHERITANCE/)
+
+How classes extend one another, and what that actually costs and buys you:
+
+- Base and derived classes, protected members
+- Access specifiers (`public`/`protected`/`private` inheritance)
+- Private inheritance
+- Constructors and destructors across a hierarchy (default, custom, copy)
+- Reused (hidden) symbols in inheritance
+
+### [3. Polymorphism →](./3-POLYMORPHISM/)
+
+One of the most powerful — and most misunderstood — ideas in OOP:
+
+- Static vs. dynamic binding
+- Object slicing and polymorphic collections
+- `override`, and overloading vs. overriding vs. hiding
+- Virtual destructors and the `static`/`final` keywords
+- Pure virtual functions, abstract classes, and abstract classes as interfaces
+- Compile-time vs. run-time polymorphism
+
 ## Structure
 
-```
+```csv
 1-CLASSES-OBJECTS-AND-DATA-STRUCTURES/   classes, objects, and 4 data structures (linked list, stack, queue, BST)
 2-INHERITANCE/                           base/derived classes, access control, constructors & destructors
 3-POLYMORPHISM/                          virtual functions, abstract classes, static/dynamic binding
 ```
-
-Every lesson follows the exact same layout. Here's what it looks like for real, using
-`2-INHERITANCE/` as a concrete example:
-
-```
-2-INHERITANCE/
-├── README.md
-│     ↳ start here — topic list for this lesson, plus an overview diagram
-├── images/
-│   └── inheritance-types-overview.jpg
-│         ↳ diagrams shown at the top of README.md (not every lesson has these)
-├── examples/
-│   ├── 01-introduction-to-inheritance/
-│   │   └── main.cpp
-│   ├── 02-protected-members/
-│   │   └── main.cpp
-│   └── ...
-│         ↳ read these next, in numeric order — one folder per topic,
-│           worked code you can run as-is
-├── homework/
-│   ├── homework-01-protected-members.cpp
-│   ├── homework-02-library-management-system.cpp
-│   └── ...
-│         ↳ then solve these, one at a time, in order — no solutions provided
-└── playground.cpp
-      ↳ a free scratch file for experimenting — overwrite it locally, it's not graded
-```
-
-`1-CLASSES-OBJECTS-AND-DATA-STRUCTURES/` and `3-POLYMORPHISM/` mirror this exact structure,
-just with different topics inside. Quick reference:
-
-| Folder / file | What's in it | What you do with it |
-|---|---|---|
-| `README.md` | The lesson's topic list, and a diagram if one exists | Read first |
-| `images/` | Diagrams referenced by `README.md` | Nothing — just context |
-| `examples/NN-topic/main.cpp` | Instructor-provided code, one concept per folder, in teaching order | Read it, run it, then move to homework |
-| `homework/homework-NN-*.cpp` | Exercises with no solutions given | Solve one at a time, in order |
-| `playground.cpp` | A free scratch file, not part of the curriculum | Overwrite freely while experimenting |
 
 ## Setup and Requirements
 
@@ -264,10 +263,20 @@ g++ -std=c++17 -Wall -o main main.cpp
    change something and re-run it — don't just read.
 4. **Then work through `homework/` one exercise at a time**, in numeric order. Each file name
    hints at what it's testing (e.g. `homework-05-online-shop-system.cpp`).
-5. **Don't modify anything under `examples/`.** Keep it untouched so you can always diff your
+5. __Don't modify anything under `examples/`.__ Keep it untouched so you can always diff your
    solution against the original reference. Compiled binaries, IDE settings, and OS files
    (`.DS_Store`, `.idea/`, `.vscode/`, `*.exe`, extensionless build output, etc.) are already
    excluded via `.gitignore` — you shouldn't need to touch it.
+
+### Rules for learning
+
+- **Don't just read.** Reading code creates familiarity; writing code creates understanding.
+- **Don't memorize.** If you understand *why* something works, you don't need to memorize it.
+- **Don't skip the exercises.** The examples show you *how*; the exercises test whether you
+   understand *why*.
+- **Don't rush to Design Patterns and SOLID.** Master objects, classes, encapsulation,
+   inheritance, and polymorphism first — patterns and principles click far faster once those are
+   second nature.
 
 ## Submitting Your Homework
 
@@ -284,3 +293,18 @@ Replace `<your-username>` with your actual GitHub username. Commit each homework
 separately with a clear message (`<lesson-number>: homework <NN> - <short description>`) so your
 progress is easy to follow. Once pushed, you can open a pull request from
 `solutions/<your-username>` into your own fork's `main` for a clean, reviewable diff of your work.
+
+---
+
+The goal isn't just to finish the exercises — it's to reach the point where you can look at a
+real software problem and naturally think: *what are the objects, what should they own, what
+should they do, and how should they interact?* That's when you stop **using** OOP and start
+**thinking in OOP**.
+
+## Start Learning
+
+### [1. Classes, Objects & Data Structures →](./1-CLASSES-OBJECTS-AND-DATA-STRUCTURES/)
+
+### [2. Inheritance →](./2-INHERITANCE/)
+
+### [3. Polymorphism →](./3-POLYMORPHISM/)
