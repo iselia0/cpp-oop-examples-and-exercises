@@ -68,85 +68,14 @@ using namespace std;
 */
 
 // Solution
-class LibraryItem {
-    public:
-        string title;
-        int year;
-        bool checkedOut;
 
-        LibraryItem(const string& itemTitle, int itemYear) : title(itemTitle), year(itemYear), checkedOut(false) {}
-
-        virtual void checkout() {
-            checkedOut = true;
-        }
-
-        virtual void checkin() {
-            checkedOut = false;
-        }
-
-        virtual void displayInfo() {
-            cout << "Title: " << title << endl;
-            cout << "Year: " << year << endl;
-            cout << "Status: " << (checkedOut ? "Checked out" : "Checked in") << endl;
-        }
-};
-
-// Derived class 1: Book
-class Book : public LibraryItem {
-    public:
-        string author;
-
-        Book(const string& bookTitle, const string& bookAuthor, int bookYear) : 
-        LibraryItem(bookTitle, bookYear), author(bookAuthor) {}
-
-        void displayInfo() override {
-            LibraryItem::displayInfo();
-            cout << "Author: " << author << endl;
-        }
-};
-
-// Derived class 2: EBook
-class EBook : public LibraryItem {
-    public:
-        string format;
-
-        EBook(const string& ebookTitle, const string& ebookFormat, int ebookYear) : LibraryItem(ebookTitle, ebookYear), format(ebookFormat) {}
-
-        void displayInfo() override {
-            LibraryItem::displayInfo();
-            cout << "Format: " << format << endl;
-        }
-};
-
-// Derived class 3: AudioCD
-class AudioCD : public LibraryItem {
-    public:
-        string artist;
-
-        AudioCD(const string& cdTitle, const string& cdArtist, int cdYear) : LibraryItem(cdTitle, cdYear), artist(cdArtist) {}
-
-        void displayInfo() override {
-            LibraryItem::displayInfo();
-            cout << "Artist: " << artist << endl;
-        }
-};
 
 
 int main() {
 
     /*      Example usage:     */ 
 
-    Book book("The Great Gatsby", "F. Scott Fitzgerald", 1925);
-    EBook ebook("The Hitchhiker's Guide to the Galaxy", "EPUB", 1979);
-    AudioCD cd("Abbey Road", "The Beatles", 1969);
-
-    LibraryItem* items[] = {&book, &ebook, &cd};
-
-    for (int i = 0; i < 3; i++) {
-        items[i]->checkout();    // Simulate checking out the item
-        items[i]->displayInfo(); // Display item information
-        items[i]->checkin();     // Simulate checking in the item
-    }
+    
 
     return 0;
 }

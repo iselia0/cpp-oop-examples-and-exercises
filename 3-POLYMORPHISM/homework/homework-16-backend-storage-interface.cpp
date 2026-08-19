@@ -6,7 +6,7 @@ using namespace std;
 /*
     Polymorphism
 
-    16. Abstract Classes as Interfaces
+    15. Abstract Classes as Interfaces
 */
 
 /*
@@ -30,51 +30,30 @@ using namespace std;
 
 // Abstract interface for data storage
 class DataStorage {
-    public:
-        // Pure virtual functions for storing and retrieving data
-        virtual void storeData(const string& data) = 0;
-        virtual string retrieveData() = 0;
-
-        // Virtual destructor
-        virtual ~DataStorage() {}
+    // TODO: Declare pure virtual functions for storing and retrieving data
+    virtual ~DataStorage() {}   // Virtual destructor
 };
 
 
 // Concrete class implementing data storage using a file
 class FileStorage : public DataStorage {
-    public:
-        // Implementing functions to store and retrieve data using a file
-        void storeData(const string& data) override {
-            cout << "Storing data in a file: " << data << endl;
-        }
+    // TODO: Implement functions to store and retrieve data using a file
 
-        string retrieveData() override {
-            return "Data read from file.";
-        }
-
-        // Virtual destructor
-        ~FileStorage() {
-            cout << "FileStorage Destructor" << endl;
-        }
+    // Virtual destructor
+    ~FileStorage() {
+        cout << "FileStorage Destructor" << endl;
+    }
 };
 
 
 // Concrete class implementing data storage using a database
 class DatabaseStorage : public DataStorage {
-    public:
-        // Implementing functions to store and retrieve data using a database
-        void storeData(const string& data) override {
-            cout << "Storing data in a database: " << data << endl;
-        }
+    // TODO: Implement functions to store and retrieve data using a database
 
-        string retrieveData() override {
-            return "Data read from database.";
-        }
-
-        // Virtual destructor
-        ~DatabaseStorage() {
-            cout << "DatabaseStorage Destructor" << endl;
-        }
+    // Virtual destructor
+    ~DatabaseStorage() {
+        cout << "DatabaseStorage Destructor" << endl;
+    }
 };
 
 

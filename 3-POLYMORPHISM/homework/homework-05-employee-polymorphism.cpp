@@ -46,58 +46,9 @@ using namespace std;
 
 
 /*  Solution:  */
-class Employee {
-    protected:
-        string name;
-        double baseSalary;
-
-    public:
-        Employee(const string& n, double salary) : name(n), baseSalary(salary) {}
-
-        virtual double calculateSalary() const {
-            return baseSalary;
-        }
-
-        virtual void display() const {
-            cout << "Name: " << name << ", Salary: " << calculateSalary() << endl;
-        }
-};
 
 
-class Manager : public Employee {
-    private:
-        double bonus;
 
-    public:
-        Manager(const string& n, double salary, double b) : Employee(n, salary), bonus(b) {}
-
-        double calculateSalary() const override {
-            return baseSalary + bonus;
-        }
-
-        void display() const override {
-            cout << "Manager - ";
-            Employee::display();
-        }
-};
-
-
-class Developer : public Employee {
-    private:
-        int numberOfProjects;
-
-    public:
-        Developer(const string& n, double salary, int projects) : Employee(n, salary), numberOfProjects(projects) {}
-
-        double calculateSalary() const override {
-            return baseSalary + (numberOfProjects * 1000);
-        }
-
-        void display() const override {
-            cout << "Developer - ";
-            Employee::display();
-        }
-};
 
 
 int main() {
@@ -111,13 +62,11 @@ int main() {
     employees[2] = new Developer("Charlie", 55000, 3);
 
     for (int i = 0; i < numEmployees; i++) {
-        employees[i]->display();
+        
     }
 
     // Clean up
-    for (int i = 0; i < numEmployees; i++) {
-        delete employees[i];
-    }
+    
 
     return 0;
 }

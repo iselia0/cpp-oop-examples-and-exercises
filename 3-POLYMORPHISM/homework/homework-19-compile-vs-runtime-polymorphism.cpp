@@ -57,11 +57,6 @@ class Complex {
         double real;
         double imag;
 
-        Complex() {
-            real = 0.0;
-            imag = 0.0;
-        }
-
         // Operator Overloading - Compile-Time Polymorphism
         Complex operator+(const Complex& other) const {
             Complex result;

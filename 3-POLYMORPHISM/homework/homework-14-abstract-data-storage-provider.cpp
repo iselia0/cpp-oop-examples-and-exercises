@@ -33,50 +33,42 @@ using namespace std;
 // Abstract class representing a data storage provider
 class DataStorageProvider {
     public:
-        // Pure virtual function to store data
-        virtual void storeData(const string& data) const = 0;
+        // TODO: Add a pure virtual function to store data
 
-        // Common functionality shared among data storage providers
-        void logStorageAttempt(const string& data) const {
-            cout << "Storage attempt for data: " << data << " logged." << endl;
-        }
+        // TODO: Add a common function to log storage attempts
 };
 
 // Concrete subclass for storing data in a relational database
 class RelationalDatabaseStorage : public DataStorageProvider {
     public:
-        // Implementation of the pure virtual function
-        void storeData(const string& data) const override {
-            // Storage logic using a relational database
-            cout << "Storing data in a relational database: " << data << endl;
-            // Additional logic specific to relational database storage
-        }
+        // TODO: Implement the storeData function
 };
 
 // Concrete subclass for storing data in a cloud-based NoSQL database
 class CloudNoSQLStorage : public DataStorageProvider {
     public:
-        // Implementation of the pure virtual function
-        void storeData(const string& data) const override {
-            // Storage logic using a cloud-based NoSQL database
-            cout << "Storing data in a cloud-based NoSQL database: " << data << endl;
-            // Additional logic specific to cloud-based NoSQL storage
-        }
+        // TODO: Implement the storeData function
 };
+
+
 
 int main() {
 
-    // Create instances of concrete subclasses
-    RelationalDatabaseStorage relationalDatabaseStorage;
-    CloudNoSQLStorage cloudNoSQLStorage;
+    // TODO: Create instances of RelationalDatabaseStorage and CloudNoSQLStorage
 
-    // Call common functionality from the abstract class
-    relationalDatabaseStorage.logStorageAttempt("Sample data 1");
-    cloudNoSQLStorage.logStorageAttempt("Sample data 2");
+    // TODO: Log storage attempts for different data
 
-    // Call specific functionality based on the type of data storage provider
-    relationalDatabaseStorage.storeData("Sample data 1");
-    cloudNoSQLStorage.storeData("Sample data 2");
+    // TODO: Store data using each storage provider
 
-    return 0;
+
+    /*
+        Example Output:
+
+        Storage attempt for data: Sample data 1 logged.
+        Storing data in a relational database: Sample data 1
+
+        Storage attempt for data: Sample data 2 logged.
+        Storing data in a cloud-based NoSQL database: Sample data 2
+    */
+
 }

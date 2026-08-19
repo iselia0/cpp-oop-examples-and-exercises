@@ -45,67 +45,7 @@ using namespace std;
 */
 
 // Solution:
-class Shape {
-    public:
-        string name;
 
-        Shape(const string& shapeName) : name(shapeName) {}
-
-        virtual void draw() {
-            cout << "Drawing a " << name << endl;
-        }
-};
-
-// Derived class 1: Circle
-class Circle : public Shape {
-    public:
-        double radius;
-
-        Circle(const string& circleName, double circleRadius) : Shape(circleName), radius(circleRadius) {}
-
-        void draw() override {
-            cout << "Drawing a circle with radius " << radius << endl;
-        }
-};
-
-// Derived class 2: Rectangle
-class Rectangle : public Shape {
-    public:
-        double length;
-        double width;
-
-        Rectangle(const string& rectangleName, double rectLength, double rectWidth) 
-        : Shape(rectangleName), length(rectLength), width(rectWidth) {}
-
-        void draw() override {
-            cout << "Drawing a rectangle with length " << length << " and width " << width << endl;
-        }
-};
-
-// Derived class 3: Triangle
-class Triangle : public Shape {
-    public:
-        double base;
-        double height;
-
-        Triangle(const string& triangleName, double triBase, double triHeight) : Shape(triangleName), base(triBase), height(triHeight) {}
-
-        void draw() override {
-            cout << "Drawing a triangle with base " << base << " and height " << height << endl;
-        }
-};
-
-// Derived class 4: Square
-class Square : public Shape {
-    public:
-        double side;
-
-        Square(const string& squareName, double squareSide) : Shape(squareName), side(squareSide) {}
-
-        void draw() override {
-            cout << "Drawing a square with side " << side << endl;
-        }
-};
 
 
 int main() {

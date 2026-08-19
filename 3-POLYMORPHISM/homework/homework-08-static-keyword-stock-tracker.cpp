@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <map>
 
 using namespace std;
 
@@ -24,13 +23,7 @@ using namespace std;
 
 */
 double trackStockPrice(string symbol, double currentPrice) {
-    static map<string, double> highestPrices; // Static map to store highest prices for each stock symbol
-
-    if (highestPrices.find(symbol) == highestPrices.end() || currentPrice > highestPrices[symbol]) {
-        highestPrices[symbol] = currentPrice;
-    }
-
-    return highestPrices[symbol];
+    // your code
 }
 
 
@@ -46,40 +39,8 @@ double trackStockPrice(string symbol, double currentPrice) {
     4. Implement a method to display the account details, including the account number and balance.
 */
 class BankAccount {
-    private:
-        static int totalAccounts;
-        int accountNumber;
-        double balance;
-
-    public:
-        BankAccount() {
-            totalAccounts++;
-            accountNumber = 1000 + totalAccounts;
-            balance = 0.0;
-        }
-
-        void deposit(double amount) {
-            balance += amount;
-        }
-
-        void withdraw(double amount) {
-            if (amount <= balance) {
-                balance -= amount;
-            } else {
-                cout << "Insufficient funds!" << endl;
-            }
-        }
-
-        void displayAccountDetails() {
-            cout << "Account Number: " << accountNumber << ", Balance: $" << balance << endl;
-        }
-
-        static int getTotalAccounts() {
-            return totalAccounts;
-        }
+    // your code
 };
-
-int BankAccount::totalAccounts = 0;
 
 
 
@@ -90,23 +51,10 @@ int BankAccount::totalAccounts = 0;
     which ensures that only one instance(object) of the class can be created. 
 */
 class OnlyOneInstance {
-    private:
-        static OnlyOneInstance *instance;
-
-        OnlyOneInstance() {}
-
-    public:
-        OnlyOneInstance(const OnlyOneInstance &obj) = delete;
-
-        static OnlyOneInstance *getInstance() {
-            if (instance == nullptr) {
-                instance = new OnlyOneInstance();
-            }
-            return instance;
-        }
+    // your code
 };
 
-OnlyOneInstance *OnlyOneInstance::instance = nullptr;
+
 
 
 /*
@@ -122,37 +70,43 @@ OnlyOneInstance *OnlyOneInstance::instance = nullptr;
     5. Generate and cache prime numbers up to a specified limit.
     6. Check if a number is prime using the cached data.
 */
-
-static int primes[100] = {0}; // Static cache for Prime numbers
+static int primes[100] = {0};   // Static cache for Prime numbers
 
 void generateAndCachePrimes(int limit) {
-    // Sieve of Eratosthenes algorithm to generate prime numbers
-    bool isPrime[101];
-    fill(begin(isPrime), end(isPrime), true);
-
-    for (int p = 2; p * p <= limit; p++) {
-        if (isPrime[p]) {
-            for (int i = p * p; i <= limit; i += p) {
-                isPrime[i] = false;
-            }
-        }
-    }
-
-    // Cache the generated prime numbers
-    int index = 0;
-    for (int i = 2; i <= limit; i++) {
-        if (isPrime[i]) {
-            primes[index++] = i;
-        }
-    }
+    // your code
 }
+
+
+
+
+
+int main() {
+    BankAccount account1;
+    account1.deposit(1000);
+    account1.withdraw(500);
+    account1.displayAccountDetails();
+
+    BankAccount account2;
+    account2.deposit(1500);
+    account2.displayAccountDetails();
+
+    // Display the total number of accounts created.
+    std::cout << "Total Accounts Created: " << BankAccount::totalAccounts << std::endl;
+
+    return 0;
+}
+
+
+
+
+
 
 
 
 
 int main() {
 
-    // Exercise-1: example usage
+    //  Exercise-1: example usage
     double price1 = trackStockPrice("AAPL", 150.25);
     cout << "Highest AAPL Stock Price: $" << price1 << endl;
 
@@ -166,7 +120,8 @@ int main() {
     cout << "Highest TSLA Stock Price: $" << price4 << endl;
 
 
-    // Exercise-2: example usage
+
+    //  Exercise-2: example usage
     BankAccount account1;
     account1.deposit(1000);
     account1.withdraw(500);
@@ -177,25 +132,17 @@ int main() {
     account2.displayAccountDetails();
 
     // Display the total number of accounts created.
-    cout << "Total Accounts Created: " << BankAccount::getTotalAccounts() << endl;
+    cout << "Total Accounts Created: " << BankAccount::totalAccounts << endl;
+
 
 
     // Exercise-3: example usage
-    OnlyOneInstance *instance1 = OnlyOneInstance::getInstance();
-    OnlyOneInstance *instance2 = OnlyOneInstance::getInstance();
+    // your code ;-)
 
-    cout << "Are instances the same? " << (instance1 == instance2 ? "Yes" : "No") << endl;
 
 
     // Exercise-4: example usage
-    generateAndCachePrimes(100);
+    // your code ;-)
 
-    // Query the cached prime numbers
-    cout << "Cached Prime Numbers: ";
-    for (int i = 0; i < 100 && primes[i] != 0; i++) {
-        cout << primes[i] << " ";
-    }
-
-    cout << endl;
 
 }

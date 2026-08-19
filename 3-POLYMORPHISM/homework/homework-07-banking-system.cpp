@@ -42,48 +42,16 @@ using namespace std;
 class Account {
     public:
         // Constructor, virtual destructor, and methods go here
-        Account(const int accountNumber, const double balance) : accountNumber_(accountNumber), balance_(balance) {}
 
-        virtual ~Account() {
-            cout << "Account " << accountNumber_ << " is being closed." << endl;
-        }
-
-        virtual void deposit(double amount) {
-            balance_ += amount;
-            cout << "Deposited $" << amount << " into Account " << accountNumber_ << endl;
-        }
-
-        virtual void withdraw(double amount) {
-            if (amount <= balance_) {
-                balance_ -= amount;
-                cout << "Withdrawn $" << amount << " from Account " << accountNumber_ << endl;
-            } else {
-                cout << "Insufficient funds in Account " << accountNumber_ << endl;
-            }
-        }
-
-        virtual void displayBalance() {
-            cout << "Account " << accountNumber_ << " Balance: $" << balance_ << endl;
-        }
-
-    private:
-        int accountNumber_;
-        double balance_;
+        
 };
 
 
 class SavingsAccount : public Account {
     public:
         // Constructor and overridden methods go here
-        SavingsAccount(const int accountNumber, const double balance, double interestRate)
-            : Account(accountNumber, balance), interestRate_(interestRate) {}
 
-        void displayBalance() override {
-            cout << " (Interest Rate: " << interestRate_ << "%)" << endl;
-        }
-
-    private:
-        double interestRate_;
+        
 };
 
 
@@ -91,11 +59,7 @@ class CheckingAccount : public Account {
     public:
         // Constructor and overridden methods go here
 
-        CheckingAccount(const int accountNumber, const double balance) : Account(accountNumber, balance) {}
-
-        void displayBalance() override {
-            cout << "Checking Account..." << endl;
-        }
+        
 };
 
 
@@ -104,25 +68,22 @@ int main() {
     // Deposit and withdraw funds, display balances
     // Properly clean up objects
 
-    
-    // Erase: 
-    // Create SavingsAccount and CheckingAccount instances
-    Account* savings = new SavingsAccount(1001, 1000.0, 3.0);  // Account Number, Initial Balance, Interest Rate
-    Account* checking = new CheckingAccount(2001, 2000.0);     // Account Number, Initial Balance
+    /*
+        Erase: 
 
-    // Deposit and withdraw funds from accounts
-    savings->deposit(500.0);
-    checking->deposit(300.0);
-    savings->withdraw(200.0);
-    checking->withdraw(1000.0);
+        // Create SavingsAccount and CheckingAccount instances
+        Account* savings = new SavingsAccount(1001, 1000.0, 3.0); // Account Number, Initial Balance, Interest Rate
+        Account* checking = new CheckingAccount(2001, 2000.0);     // Account Number, Initial Balance
 
-    // Display balances using polymorphism
-    savings->displayBalance();
-    checking->displayBalance();
+        // Deposit and withdraw funds from accounts
+        
 
-    // Properly clean up objects
-    delete savings;
-    delete checking;
+        // Display balances using polymorphism
+        
+
+        // Properly clean up objects
+        
+    */
 
     return 0;
 }

@@ -1,9 +1,14 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <unordered_map>
 
 using namespace std;
+
+/*
+    Polymorphism
+
+    15. Abstract Classes as Interfaces
+*/
+
 
 /*
     Exercise: E-Commerce System Design
@@ -34,81 +39,21 @@ using namespace std;
         performing operations like displaying product details, adding/removing items from the cart, and checking out.
 */
 
-// Step 1: Define ProductManager interface
-class ProductManager {
-public:
-    virtual void displayProductDetails(int productId) = 0;
-    virtual ~ProductManager() = default; // Virtual destructor for proper cleanup
-};
 
-// Step 2: Define AbstractCart abstract class
-class AbstractCart : public ProductManager {
-protected:
-    vector<int> cart;
-    unordered_map<int, string> productCatalog;
+#include <vector>
 
-public:
-    AbstractCart() {
-        // Populate the product catalog with some sample data
-        productCatalog[101] = "Laptop";
-        productCatalog[102] = "Smartphone";
-        productCatalog[201] = "Tablet";
-        productCatalog[202] = "Smartwatch";
-    }
+// TODO: Define ProductManager interface
 
-    void addToCart(int productId) {
-        cart.push_back(productId);
-        cout << "Product with ID " << productId << " added to cart." << endl;
-    }
+// TODO: Define AbstractCart abstract class
 
-    void removeFromCart(int productId) {
-        auto it = find(cart.begin(), cart.end(), productId);
-        if (it != cart.end()) {
-            cart.erase(it);
-            cout << "Product with ID " << productId << " removed from cart." << endl;
-        } else {
-            cout << "Product with ID " << productId << " not found in cart." << endl;
-        }
-    }
+// TODO: Implement OnlineStore class
 
-    void displayCart() const {
-        cout << "Cart contents:" << endl;
-        for (int productId : cart) {
-            cout << " - " << productCatalog.at(productId) << " (ID: " << productId << ")" << endl;
-        }
-    }
+// TODO: Implement MobileApp class
 
-    virtual void checkout() = 0; // Pure virtual function for checkout
-};
-
-// Step 3: Implement OnlineStore class
-class OnlineStore : public AbstractCart {
-public:
-    void displayProductDetails(int productId) override {
-        cout << "Online Store Product Details for ID " << productId << ": " << productCatalog[productId] << endl;
-    }
-
-    void checkout() override {
-        cout << "Online Store Checkout: Processing payment online." << endl;
-        cart.clear(); // Clear the cart after checkout
-    }
-};
-
-// Step 4: Implement MobileApp class
-class MobileApp : public AbstractCart {
-public:
-    void displayProductDetails(int productId) override {
-        cout << "Mobile App Product Details for ID " << productId << ": " << productCatalog[productId] << endl;
-    }
-
-    void checkout() override {
-        cout << "Mobile App Checkout: Processing payment via mobile app." << endl;
-        cart.clear(); // Clear the cart after checkout
-    }
-};
 
 int main() {
-    // Demonstrate the use of both the interface and abstract class
+
+    // Step 4: Demonstrate the use of both the interface and abstract class
 
     OnlineStore onlineStore;
     onlineStore.displayProductDetails(101);
@@ -124,5 +69,4 @@ int main() {
     mobileApp.displayCart();
     mobileApp.checkout();
 
-    return 0;
 }

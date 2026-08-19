@@ -26,17 +26,7 @@ class Shape {
     public:
         // Static method to compare the areas of two shapes
         // Hint: You'll need to access the CalculateArea static methods in the derived classes.
-        static bool CompareAreas(const Shape& shape1, const Shape& shape2) {
-            double area1 = shape1.CalculateArea();
-            double area2 = shape2.CalculateArea();
-            return area1 == area2;
-        }
-
-        virtual double CalculateArea() const {
-            return 0.0;
-        }
 };
-
 
 class Circle : public Shape {
     public:
@@ -44,41 +34,14 @@ class Circle : public Shape {
 
         // Static method to calculate the area of a circle
         // Hint: Use the formula for calculating the area of a circle (A = π * r^2)
-
-        // Static method to calculate the area of a circle
-        static double CalculateArea(double radius) {
-            return 3.14159 * radius * radius;
-        }
-
-        // Override the virtual method to calculate the area of the circle
-        double CalculateArea() const override {
-            return CalculateArea(radius);
-        }
-
-    private:
-        double radius;
 };
 
-
 class Rectangle : public Shape {
-    private:
-        double width, height;
-
     public:
         Rectangle(double width, double height) : width(width), height(height) {}
 
         // Static method to calculate the area of a rectangle
         // Hint: Use the formula for calculating the area of a rectangle (A = width * height)
-
-        // Static method to calculate the area of a rectangle
-        static double CalculateArea(double width, double height) {
-            return width * height;
-        }
-
-        // Override the virtual method to calculate the area of the rectangle
-        double CalculateArea() const override {
-            return CalculateArea(width, height);
-        }
 };
 
 int main() {

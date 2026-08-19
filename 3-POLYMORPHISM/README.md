@@ -50,6 +50,7 @@ compile-time polymorphism (overloading) fits next to run-time polymorphism (over
 | 10 | Static members — shape area calculations |
 | 11 | User hierarchy at different inheritance levels |
 | 12 | `final` keyword — authenticator |
+| 13 | `final` keyword — `DatabaseConnection` factory |
 | 14 | Abstract `DataStorageProvider` |
 | 15 | Abstract `PaymentMethod` provider |
 | 16 | Backend data storage interface |

@@ -38,56 +38,35 @@ using namespace std;
 */
 
 
-int sum(int, int);
-
 
 // Abstract class representing a payment method
 class PaymentMethod {
     public:
-        // Pure virtual function to process a payment
-        virtual void processPayment(double amount) const = 0;
+        // TODO: Add a pure virtual function to process payment
 
-        // Common functionality shared among payment methods
-        void logPaymentAttempt(double amount) const {
-            cout << "Payment attempt for amount $" << amount << " logged." << endl;
-        }
+        // TODO: Add a common function to log payment attempts
 };
 
 // Concrete subclass for processing credit card payments
 class CreditCardPayment : public PaymentMethod {
     public:
-        // Implementation of the pure virtual function
-        void processPayment(double amount) const override {
-            // Payment processing logic for credit card
-            cout << "Processing credit card payment for amount $" << amount << "." << endl;
-            // Additional logic specific to credit card payments
-        }
+        // TODO: Implement the processPayment function
 };
 
 // Concrete subclass for processing PayPal payments
 class PayPalPayment : public PaymentMethod {
     public:
-        // Implementation of the pure virtual function
-        void processPayment(double amount) const override {
-            // Payment processing logic for PayPal
-            cout << "Processing PayPal payment for amount $" << amount << "." << endl;
-            // Additional logic specific to PayPal payments
-        }
+        // TODO: Implement the processPayment function
 };
+
 
 int main() {
 
-    // Create instances of concrete subclasses
-    CreditCardPayment creditCardPayment;
-    PayPalPayment payPalPayment;
+    // TODO: Create instances of CreditCardPayment and PayPalPayment
 
-    // Call common functionality from the abstract class
-    creditCardPayment.logPaymentAttempt(50.0);
-    payPalPayment.logPaymentAttempt(30.0);
+    // TODO: Log payment attempts for different amounts
 
-    // Call specific functionality based on the type of payment method
-    creditCardPayment.processPayment(50.0);
-    payPalPayment.processPayment(30.0);
+    // TODO: Process payments using each payment method
 
     return 0;
 }

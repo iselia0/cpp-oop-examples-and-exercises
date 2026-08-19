@@ -6,7 +6,7 @@ using namespace std;
 /*
     Polymorphism
 
-    17. Abstract Classes as Interfaces
+    15. Abstract Classes as Interfaces
 */
 
 
@@ -42,65 +42,13 @@ using namespace std;
 
 // Starter Code: 
 
-// Tip 1: Identify common functionalities for an interface
-class Shape {
-    public:
-        virtual void draw() const = 0;         // Common functionality for all shapes
-        virtual double calculateArea() const = 0;
-        virtual ~Shape() {}                    // Virtual destructor for proper cleanup
-};
+// TODO: Identify common functionalities for the Shape interface
 
-// Tip 2: Consider partial implementation in an abstract class
-class DrawableShape : public Shape {
-    public:
-        // Partial implementation of draw common to all drawable shapes
-        void draw() const override {
-            cout << "Drawing a shape." << endl;
-        }
 
-        // Abstract function to be implemented by derived classes
-        virtual void resize(double factor) = 0;
+// TODO: Consider partial implementation in an abstract class named DrawableShape
 
-        // Virtual destructor for proper cleanup
-        virtual ~DrawableShape() {}
-};
 
-// Tip 3: Implement concrete classes (e.g., Circle, Square) inheriting from the interface or abstract class
-class Circle : public DrawableShape {
-    private:
-        double radius;
-
-    public:
-        Circle(double r) : radius(r) {}
-
-        // Implementation of calculateArea for a circle
-        double calculateArea() const override {
-            return 3.14 * radius * radius;
-        }
-
-        // Implementation of resize for a circle
-        void resize(double factor) override {
-            radius *= factor;
-        }
-};
-
-class Square : public DrawableShape {
-    private:
-        double side;
-
-    public:
-        Square(double s) : side(s) {}
-
-        // Implementation of calculateArea for a square
-        double calculateArea() const override {
-            return side * side;
-        }
-
-        // Implementation of resize for a square
-        void resize(double factor) override {
-            side *= factor;
-        }
-};
+// TODO: Implement concrete classes (e.g., Circle and Square) inheriting from the interface or abstract class
 
 
 int main() {
