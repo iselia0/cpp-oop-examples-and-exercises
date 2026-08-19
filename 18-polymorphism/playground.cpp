@@ -3,15 +3,9 @@
 
 using namespace std;
 
-int& sum(int& a) {
-    return a;
-}
-
-
  
 int main () {
     system("clear");
 
-    
-
+    return 0;
 }
