@@ -37,6 +37,29 @@ using namespace std;
 
 /*  Solution */
 
+class Book{
+private:
+    string Title;
+    string Author;
+    int PublicationYear;
+    string isbn;
+
+public:
+    void setBookDetails(string t, string a, int p, string i){
+        Title=t;
+        Author=a;
+        PublicationYear=p;
+        isbn=i;
+    }
+
+    void displayBookDetails(){
+        cout<<"Title"<<Title<<endl;
+        cout<<"Author"<<Author<<endl;
+        cout<<"Publication Year"<<PublicationYear<<endl;
+        cout<<"ISBN"<<isbn<<endl;
+    }
+};
+
 
 int main() {
 
@@ -55,7 +78,6 @@ int main() {
     cout << "Book 2 Details:" << endl;
     book2.displayBookDetails();
     cout << endl;
-    system("clear");
 
     return 0;
 }
