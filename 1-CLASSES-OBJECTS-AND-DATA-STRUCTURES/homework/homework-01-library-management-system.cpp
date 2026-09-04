@@ -38,7 +38,6 @@ using namespace std;
 /*  Solution */
 
 
-
 int main() {
 
     /*      Example usage:     */
@@ -56,6 +55,7 @@ int main() {
     cout << "Book 2 Details:" << endl;
     book2.displayBookDetails();
     cout << endl;
+    system("clear");
 
     return 0;
 }
