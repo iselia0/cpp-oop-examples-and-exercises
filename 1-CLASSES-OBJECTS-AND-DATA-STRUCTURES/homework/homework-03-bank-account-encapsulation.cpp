@@ -27,9 +27,41 @@ class BankAccount {
 
     public:
         // Constructor
-        BankAccount(int accountNumber, const string &holderName, double initialBalance) {
-            // TODO: Initialize member variables
+        BankAccount(int accNumber, const string &name, double Abalance) {
+            accountNumber=accNumber;
+            holderName=name;
+            balance=Abalance;
         }
+
+        void deposit(double amount){
+            if(amount>0){
+                balance+=amount;
+                cout<<"Deposit:"<<amount<<endl;
+            }
+            else{
+                cout<<"Not a deposit amount:"<<endl;
+            }
+        }
+
+        void withdraw(double amount){
+            if(amount>0 && amount<=balance){
+                balance=balance-amount;
+                cout<<"Withdraw:"<<amount<<endl;
+            }
+            else{
+                cout<<"Error"<<endl;
+            }
+        }
+
+        double getBalance() const {
+        return balance;
+        }
+
+        void displayDetails() const {
+        cout<<"Account Number:"<<accountNumber<<endl;
+        cout<<"Name:"<<holderName<<endl;
+        cout<<"Balance:"<<balance<<endl;
+    }
 
         // Member functions
         // TODO: Implement member functions for deposit, withdraw, and check balance
@@ -55,6 +87,25 @@ int main() {
         This exercise will help you practice encapsulation and understand how to hide 
         implementation details while exposing a controlled interface to the users of your class!
     */
+
+    BankAccount acc1(1001, "John Doe", 500.0);
+
+    cout<<"Initial Account Details:"<<endl;
+    acc1.displayDetails();
+    cout<<endl;
+
+    acc1.deposit(200.0);
+    cout<<"Balance after deposit: $"<<acc1.getBalance()<<endl<<endl;
+
+    acc1.withdraw(150.0);
+    cout<<"Balance after withdrawal: $" << acc1.getBalance() << endl << endl;
+
+    acc1.withdraw(700.0);
+    cout << "Balance after invalid withdrawal attempt: $" << acc1.getBalance() << endl << endl;
+
+    cout << "Final Account Details:" << endl;
+    acc1.displayDetails();
+
 
     return 0;
 }
