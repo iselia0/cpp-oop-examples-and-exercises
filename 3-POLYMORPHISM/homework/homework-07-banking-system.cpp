@@ -42,6 +42,33 @@ using namespace std;
 class Account {
     public:
         // Constructor, virtual destructor, and methods go here
+        Account(const int accountNumber, const double balance)
+            : accountNumber(accountNumber), balance(balance){}
+
+        virtual ~Account(){}
+
+        virtual void deposit(double amount){
+            balance+=amount;
+            cout<<"Deposited "<<amount<<" into Account "<<accountNumber<< " New balance: "<<balance<<endl;
+        }
+
+        virtual void withdraw(double amount){
+            if(amount<=balance){
+                balance-=amount;
+                cout<<"Withdrew "<<amount<<" from Account "<<accountNumber<<" New balance: "<<balance<<endl;
+            } 
+            else{
+                cout<<"Error - Insufficient funds in Account "<<accountNumber<<endl;
+            }
+        }
+
+        virtual void displayBalance(){
+            cout<<"Account "<<accountNumber<<" Balance: "<<balance<<endl;
+        }
+
+    protected:
+        int accountNumber;
+        double balance;
 
         
 };
@@ -50,6 +77,25 @@ class Account {
 class SavingsAccount : public Account {
     public:
         // Constructor and overridden methods go here
+        SavingsAccount(const int accountNumber, const double balance, const double interestRate)
+            : Account(accountNumber, balance), interestRate(interestRate){}
+
+        void displayBalance() override{
+            cout<<"Savings Account "<<accountNumber<<" Balance: "<<balance<<" Interest Rate: " <<interestRate<<endl;
+        }
+
+        void withdraw(double amount) override{
+            if(amount<balance){
+                balance-=amount;
+                cout<<"Withdrew "<<amount<<" from Savings Account "<<accountNumber<<" New balance: "<<balance<<endl;
+            } 
+            else{
+                cout<<"Error: Withdrawal amount exceeds balance in Savings Account "<<accountNumber<<endl;
+            }
+        }
+
+    private:
+        double interestRate;
 
         
 };
@@ -58,15 +104,46 @@ class SavingsAccount : public Account {
 class CheckingAccount : public Account {
     public:
         // Constructor and overridden methods go here
+        CheckingAccount(const int accountNumber, const double balance)
+            : Account(accountNumber, balance){}
 
+        void displayBalance() override{
+            cout<<"Checking Account "<<accountNumber<<" Balance: "<<balance<<" This is a checking account"<<endl;
+        }
+
+        void withdraw(double amount) override{
+            if(amount<balance){
+                balance-=amount;
+                cout<<"Withdrew "<<amount<<" from Checking Account "<<accountNumber<< " New balance: "<<balance<<endl;
+            } 
+            else{
+                cout<<"Error- Withdrawal amount exceeds balance in Checking Account "<<accountNumber<<endl;
+            }
+        }
         
 };
 
 
 int main() {
-    // Create instances of SavingsAccount and CheckingAccount
+    // Create instances of SavingsAccount and 
     // Deposit and withdraw funds, display balances
     // Properly clean up objects
+    Account* savings=new SavingsAccount(1001, 1000.0, 3.0); 
+    Account* checking=new CheckingAccount(2001, 2000.0); 
+
+    savings->deposit(500.0);
+    savings->withdraw(200.0);
+    savings->withdraw(5000.0);
+
+    checking->deposit(300.0);
+    checking->withdraw(1000.0);
+    checking->withdraw(10000.0);
+
+    savings->displayBalance();
+    checking->displayBalance();
+
+    delete savings;
+    delete checking;
 
     /*
         Erase: 

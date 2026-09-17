@@ -27,6 +27,8 @@ using namespace std;
        - setDirection()
        - getPosition()
        - move()
+    
+    Answer: move() 
 */
 
 /*
@@ -57,6 +59,8 @@ using namespace std;
        - setPrice()
        - getDescription()
        - setDescription()
+
+    Answer: calculateTax() and calculateShipping()
 */
 
 /*
@@ -89,6 +93,8 @@ using namespace std;
        - getProfilePicture()
        - deleteContent()
        - setProfilePicture()
+
+    Answer: manageUsers(), postContent() and deleteCOntent() 
 */
 
 /*

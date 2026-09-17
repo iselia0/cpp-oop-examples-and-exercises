@@ -24,8 +24,43 @@ using namespace std;
 */
 double trackStockPrice(string symbol, double currentPrice) {
     // your code
-}
+    double trackStockPrice(string symbol, double currentPrice){
+    static string symboli[100];
+    static double highest[100];
+    static int n=0;
 
+    for(int i=0; i<n; i++){
+        if(symboli[i]==symbol){
+            if(currentPrice>highest[i]) 
+            highest[i]=currentPrice;
+            return highest[i];
+        }
+    }
+
+    symboli[n]=symbol;
+    highest[n]=currentPrice;
+    n++;
+    return currentPrice;
+}
+}
+double trackStockPrice(string symbol, double currentPrice){
+    static string symboli[100];
+    static double highest[100];
+    static int n=0;
+
+    for(int i=0; i<n; i++){
+        if(symboli[i]==symbol){
+            if(currentPrice>highest[i]) 
+            highest[i]=currentPrice;
+            return highest[i];
+        }
+    }
+
+    symboli[n]=symbol;
+    highest[n]=currentPrice;
+    n++;
+    return currentPrice;
+}
 
 /*
     Exercise-2: Bank Account Management
@@ -39,8 +74,50 @@ double trackStockPrice(string symbol, double currentPrice) {
     4. Implement a method to display the account details, including the account number and balance.
 */
 class BankAccount {
-    // your code
+    private:
+    int accountNumber;
+    double balance;
+ 
+    static int nextAccountNumber;
+ 
+public:
+    static int totalAccounts;   
+    BankAccount(double initialBalance=0.0) : balance(initialBalance){
+        accountNumber=nextAccountNumber++;
+        totalAccounts++;
+    }
+ 
+    void deposit(double amount){
+        if(amount<=0){
+            cout<<"Amount must be positive."<<endl;
+            return;
+        }
+        balance+=amount;
+    }
+ 
+    void withdraw(double amount){
+        if(amount<=0){
+            cout<<"Amount must be positive."<<endl;
+            return;
+        }
+        if(amount>balance){
+            cout<<"Insufficient funds "<<accountNumber<<endl;
+            return;
+        }
+        balance-=amount;
+    }
+ 
+    void displayAccountDetails() const{
+        cout<<"Account Number:"<<accountNumber<<"Balance:"<<balance<<endl;
+    }
 };
+ 
+
+int BankAccount::nextAccountNumber=1;
+int BankAccount::totalAccounts=1;
+ 
+    // your code
+
 
 
 
@@ -50,9 +127,23 @@ class BankAccount {
     Create a C++ program that implements a  class, 
     which ensures that only one instance(object) of the class can be created. 
 */
-class OnlyOneInstance {
-    // your code
+class OnlyOneInstance{
+private:
+    static OnlyOneInstance* instance;
+    OnlyOneInstance(){
+        cout<<"OnlyOneInstance created."<<endl;
+    }
+ 
+public:
+    OnlyOneInstance(const OnlyOneInstance&);
+    static OnlyOneInstance* getInstance(){
+        if(instance==nullptr){
+            instance=new OnlyOneInstance();
+        }
+        return instance;
+    }
 };
+ 
 
 
 
@@ -70,11 +161,40 @@ class OnlyOneInstance {
     5. Generate and cache prime numbers up to a specified limit.
     6. Check if a number is prime using the cached data.
 */
-static int primes[100] = {0};   // Static cache for Prime numbers
+const int maxlim=100;
+static int primes[maxlim+1];
+static bool cached=false;
 
-void generateAndCachePrimes(int limit) {
-    // your code
+void generateAndCachePrimes(int limit){
+    if(limit>maxlim){
+        limit=maxlim;
+    }
+    for (int i=0; i<=limit; i++){
+        primes[i]=1;
+    }
+    primes[0]=0;
+    if(limit>=1){
+        primes[1]=0;
+    }
+    for(int i=2; i<=limit; i++){
+        if(primes[i]==1){
+            for(int j=i*2; j<=limit; j=j+i){
+                primes[j]=0;
+            }
+        }
+    }
+    cached=true;
 }
+
+bool isPrimeCached(int number){
+    if (cached==false){
+        generateAndCachePrimes(maxlim);
+    }
+    if (number< 0 || number>maxlim){
+        return false;
+    }
+    return primes[number]==1;
+}   
 
 
 

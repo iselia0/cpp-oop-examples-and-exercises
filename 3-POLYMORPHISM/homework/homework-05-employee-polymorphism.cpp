@@ -48,25 +48,79 @@ using namespace std;
 /*  Solution:  */
 
 
+class Employee{
+    public:
+        Employee(const string& n, double salary) : name(n), baseSalary(salary){}
+
+        virtual double calculateSalary() const{
+            return baseSalary;
+        }
+
+        virtual void display() const{
+            cout<<name<<" Salary: "<<calculateSalary()<<endl;
+        }
+
+        virtual ~Employee(){}
+
+    protected:
+        string name;
+        double baseSalary;
+};
+
+
+class Manager : public Employee{
+    public:
+        Manager(const string& n, double salary, double bonus)
+            : Employee(n, salary), bonus(bonus){}
+
+        double calculateSalary() const override{
+            return baseSalary+bonus;
+        }
+
+        void display() const override{
+            cout<<"Manager: "<<name<<" Salary: "<<calculateSalary()<<endl;
+        }
+
+    private:
+        double bonus;
+};
+
+
+class Developer : public Employee{
+    public:
+        Developer(const string& n, double salary, int projects)
+            : Employee(n, salary), numberOfProjects(projects){}
+
+        double calculateSalary() const override{
+            return baseSalary+(numberOfProjects * 1000);
+        }
+
+        void display() const override{
+            cout<<"Developer: "<<name<<" Salary: "<<calculateSalary()<<endl;
+        }
+
+    private:
+        int numberOfProjects;
+};
 
 
 
 int main() {
-
     /*  Example Usage  */
-    const int numEmployees = 3;
+    const int numEmployees=3;
     Employee* employees[numEmployees];
 
-    employees[0] = new Manager("Alice", 50000, 10000);
-    employees[1] = new Developer("Bob", 60000, 5);
-    employees[2] = new Developer("Charlie", 55000, 3);
+    employees[0]=new Manager("Alice", 50000, 10000);
+    employees[1]=new Developer("Bob", 60000, 5);
+    employees[2]=new Developer("Charlie", 55000, 3);
 
-    for (int i = 0; i < numEmployees; i++) {
-        
+    for(int i=0; i<numEmployees; i++){
+        employees[i]->display();
     }
 
     // Clean up
-    
-
+    for(int i=0; i<numEmployees; i++){
+        delete employees[i];
+    }
     return 0;
 }

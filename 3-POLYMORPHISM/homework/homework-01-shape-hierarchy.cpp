@@ -46,7 +46,49 @@ using namespace std;
 
 // Solution:
 
+class Shape{
+protected:
+    string name;
+public:
+    Shape(string n):name(n){}
+    virtual void draw()=0;
+};
 
+class Circle:public Shape{
+    double radius;
+public:
+    Circle(string n,double r):Shape(n),radius(r){}
+    void draw() override {
+        cout<<"Drawing a circle with radius "<<radius<<endl;
+    }
+};
+
+class Rectangle:public Shape{
+    double length,width;
+public:
+    Rectangle(string n,double l,double w):Shape(n),length(l),width(w){}
+    void draw() override {
+        cout<<"Drawing a rectangle with length "<<length<<" and width "<<width<<endl;
+    }
+};
+
+class Triangle:public Shape{
+    double base,height;
+public:
+    Triangle(string n,double b,double h):Shape(n),base(b),height(h){}
+    void draw() override {
+        cout<<"Drawing a triangle with base "<<base<<" and height "<<height<<endl;
+    }
+};
+
+class Square:public Shape{
+    double side;
+public:
+    Square(string n,double s):Shape(n),side(s){}
+    void draw() override {
+        cout<<"Drawing a square with side "<<side<<endl;
+    }
+};
 
 int main() {
 

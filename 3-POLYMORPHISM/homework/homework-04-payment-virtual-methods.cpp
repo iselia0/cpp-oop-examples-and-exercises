@@ -40,7 +40,7 @@ class Payment {
         string getStatus() const { return status; }
 
         // Decide which methods should be virtual and make them so.
-        
+        virtual void processPayment()=0;
 
         virtual ~Payment() {}
 
@@ -61,7 +61,9 @@ class CreditCardPayment : public Payment {
         }
 
         // Override the base class method if it's virtual
-        
+        void processPayment() override{
+            authorizePayment();
+        }
 
     private:
         string cardType;
@@ -78,7 +80,9 @@ class DebitCardPayment : public Payment {
         }
 
         // Override the base class method if it's virtual
-        
+        void processPayment() override{ 
+            verifyFunds(); 
+        }
 
     private:
         string cardType;
@@ -95,7 +99,9 @@ class PayPalPayment : public Payment {
         }
 
         // Override the base class method if it's virtual
-        
+        void processPayment() override{ 
+            executePayment(); 
+        }
 
     private:
         string email;
@@ -119,7 +125,10 @@ int main() {
     for (Payment* payment : payments) {
         // Use polymorphism to process payments
         // TODO:
+        payment->processPayment(); 
+        cout<<"Status: "<<payment->getStatus()<<endl; 
     }
+    
 
     return 0;
 }

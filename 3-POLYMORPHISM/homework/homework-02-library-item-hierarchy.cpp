@@ -69,12 +69,70 @@ using namespace std;
 
 // Solution
 
+class LibraryItem{
+protected:
+    string title;
+    int year;
+    bool checkedOut;
+public:
+    LibraryItem(string t,int y):title(t),year(y),checkedOut(false){}
+    virtual void checkout(){checkedOut=true;}
+    virtual void checkin(){checkedOut=false;}
+    virtual void displayInfo()=0;
+    string getStatus(){return checkedOut?"Checked out":"Checked in";}
+};
 
+class Book:public LibraryItem{
+    string author;
+public:
+    Book(string t,int y,string a):LibraryItem(t,y),author(a){}
+    void displayInfo() override {
+        cout<<"Book Title: "<<title<<endl;
+        cout<<"Author: "<<author<<endl;
+        cout<<"Year: "<<year<<endl;
+        cout<<"Status: "<<getStatus()<<endl<<endl;
+    }
+};
+
+class EBook:public LibraryItem{
+    string format;
+public:
+    EBook(string t,int y,string f):LibraryItem(t,y),format(f){}
+    void displayInfo() override {
+        cout<<"EBook Title: "<<title<<endl;
+        cout<<"Format: "<<format<<endl;
+        cout<<"Year: "<<year<<endl;
+        cout<<"Status: "<<getStatus()<<endl<<endl;
+    }
+};
+
+class AudioCD:public LibraryItem{
+    string artist;
+public:
+    AudioCD(string t,int y,string ar):LibraryItem(t,y),artist(ar){}
+    void displayInfo() override {
+        cout<<"Audio CD Title: "<<title<<endl;
+        cout<<"Artist: "<<artist<<endl;
+        cout<<"Year: "<<year<<endl;
+        cout<<"Status: "<<getStatus()<<endl<<endl;
+    }
+};
 
 int main() {
 
     /*      Example usage:     */ 
+    Book book("The Great Gatsby",1925,"F. Scott Fitzgerald");
+    EBook ebook("The Hitchhiker's Guide to the Galaxy",1979,"EPUB");
+    AudioCD cd("Abbey Road",1969,"The Beatles");
 
+    LibraryItem* items[]={&book,&ebook,&cd};
+
+    for(int i=0;i<3;i++){
+        items[i]->checkout();
+        items[i]->displayInfo();
+        items[i]->checkin();
+        items[i]->displayInfo();
+    }
     
 
     return 0;
