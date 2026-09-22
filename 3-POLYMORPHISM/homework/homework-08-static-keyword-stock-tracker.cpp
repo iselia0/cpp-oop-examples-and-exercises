@@ -77,16 +77,16 @@ class BankAccount {
     private:
     int accountNumber;
     double balance;
- 
     static int nextAccountNumber;
- 
+
 public:
-    static int totalAccounts;   
-    BankAccount(double initialBalance=0.0) : balance(initialBalance){
+    static int totalAccounts;
+
+    BankAccount(double initialBalance=0.0):balance(initialBalance){
         accountNumber=nextAccountNumber++;
         totalAccounts++;
     }
- 
+
     void deposit(double amount){
         if(amount<=0){
             cout<<"Amount must be positive."<<endl;
@@ -94,7 +94,7 @@ public:
         }
         balance+=amount;
     }
- 
+
     void withdraw(double amount){
         if(amount<=0){
             cout<<"Amount must be positive."<<endl;
@@ -106,15 +106,15 @@ public:
         }
         balance-=amount;
     }
- 
+
     void displayAccountDetails() const{
-        cout<<"Account Number:"<<accountNumber<<"Balance:"<<balance<<endl;
+        cout<<"Account Number: "<<accountNumber<<"  Balance: "<<balance<<endl;
     }
 };
  
 
-int BankAccount::nextAccountNumber=1;
-int BankAccount::totalAccounts=1;
+int BankAccount::nextAccountNumber=1001;
+int BankAccount::totalAccounts=0;
  
     // your code
 

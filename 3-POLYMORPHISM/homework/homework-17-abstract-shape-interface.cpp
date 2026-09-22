@@ -43,12 +43,66 @@ using namespace std;
 // Starter Code: 
 
 // TODO: Identify common functionalities for the Shape interface
+class Shape{
+    public:
+        virtual void draw() const=0;
+        virtual double calculateArea() const=0;
+        virtual void resize(double factor)=0;
 
+        virtual ~Shape(){}
+};
 
 // TODO: Consider partial implementation in an abstract class named DrawableShape
+class DrawableShape : public Shape{
+    protected:
+        double size;
+
+    public:
+        DrawableShape(double s) : size(s){}
+
+        void resize(double factor) override{
+            size*=factor;
+            cout<<"Shape resized by factor of "<<factor<<endl;
+        }
+
+        virtual ~DrawableShape(){}
+};
 
 
 // TODO: Implement concrete classes (e.g., Circle and Square) inheriting from the interface or abstract class
+class Circle : public DrawableShape{
+    public:
+        Circle(double radius) : DrawableShape(radius){}
+
+        void draw() const override{
+            cout<<"Circle radius "<<size<<endl;
+        }
+
+        double calculateArea() const override{
+            return 3.14*size*size;
+        }
+
+        ~Circle(){
+            cout<<"Circle destructor"<<endl;
+        }
+};
+
+class Square : public DrawableShape{
+    public:
+        Square(double side) : DrawableShape(side){}
+
+        void draw() const override{
+            cout<<"Square side"<<size<<endl;
+        }
+
+        double calculateArea() const override{
+            return size*size;
+        }
+
+        ~Square(){
+            cout<<"Square destructor"<<endl;
+        }
+};
 
 
 int main() {

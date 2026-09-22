@@ -43,6 +43,7 @@ using namespace std;
 class MathOperations {
     public:
         // Method Overloading - Compile-Time Polymorphism
+        
         int add(int a, int b) {
             return a + b;
         }
@@ -58,6 +59,7 @@ class Complex {
         double imag;
 
         // Operator Overloading - Compile-Time Polymorphism
+
         Complex operator+(const Complex& other) const {
             Complex result;
             result.real = real + other.real;
@@ -94,9 +96,11 @@ int main() {
     MathOperations math;
 
     // Guess: Is this an example of compile-time or run-time polymorphism?
+    //Bu compile-time polymorphismdir cunki, methodu cagiranda verilmis parametrin tipine uygun olaraq hansinin cagirilacagina qerar verilir.
     cout << "Sum (int): " << math.add(3, 4) << endl;
 
     // Guess: Is this an example of compile-time or run-time polymorphism?
+    //Bu compile-time polymorphismdir cunki, methodu cagiranda verilmis parametrin tipine uygun olaraq hansinin cagirilacagina qerar verilir.
     cout << "Sum (double): " << math.add(3.5, 4.5) << endl;
 
     Complex c1, c2, result;
@@ -106,6 +110,7 @@ int main() {
     c2.imag = 1.5;
 
     // Guess: Is this an example of compile-time or run-time polymorphism?
+    //Operator funksiyasi virtual deyil, virtual olmuyan funksiya run time polymorphism ola bilmez.
     result = c1 + c2;
     cout << "Sum: " << result.real << " + " << result.imag << "i" << endl;
 
@@ -113,9 +118,11 @@ int main() {
     Shape* shape2 = new Square();
 
     // Guess: Is this an example of compile-time or run-time polymorphism?
+    //Run-time polymorphismdir cunki, run olunan zaman vtabledan shape1-in eslinde hansi classa aid olduguna qerar vererek cagirir.        
     shape1->draw();  // Calls the draw() method of Circle
 
     // Guess: Is this an example of compile-time or run-time polymorphism?
+    //Run-time polymorphismdir cunki, run olunan zaman vtabledan shape2-in eslinde hansi classa aid olduguna qerar vererek cagirir.  
     shape2->draw();  // Calls the draw() method of Square
 
     delete shape1;

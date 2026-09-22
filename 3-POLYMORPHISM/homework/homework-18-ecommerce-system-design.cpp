@@ -43,13 +43,67 @@ using namespace std;
 #include <vector>
 
 // TODO: Define ProductManager interface
+class ProductManager{
+    public:
+        virtual void displayProductDetails(int productId) const =0;
+
+        virtual ~ProductManager(){}
+};
 
 // TODO: Define AbstractCart abstract class
+class AbstractCart : public ProductManager{
+    protected:
+        int itemCount=0;
 
+    public:
+        void addToCart(int productId){
+            itemCount++;
+            cout<<"Product "<<productId<<" added to cart"<<endl;
+        }
+
+        void removeFromCart(int productId){
+            if(itemCount>0){
+                itemCount--;
+                cout<<"Product "<<productId<<" removed from cart"<<endl;
+            } 
+            else{
+                cout<<"Cart is empty"<<endl;
+            }
+        }
+
+        void displayCart() const{
+            cout<<"Cart has "<<itemCount<<" items"<<ndl;
+        }
+
+        virtual void checkout()=0;
+        virtual ~AbstractCart(){}
+};
 // TODO: Implement OnlineStore class
+class OnlineStore : public AbstractCart{
+    public:
+        void displayProductDetails(int productId) const override{
+            cout<<"Product ID "<<productId<<endl;
+        }
 
+        void checkout() override{
+            cout<<"Checking out "<<itemCount<<" items"<<endl;
+        }
+
+        ~OnlineStore(){}
+};
 // TODO: Implement MobileApp class
+class MobileApp : public AbstractCart{
+    public:
+        void displayProductDetails(int productId) const override{
+            cout<<"Product ID "<<productId<<endl;
+        }
 
+        void checkout() override{
+            cout<<"Checking out "<<itemCount<<" items"<<endl;
+        }
+
+        ~MobileApp(){}
+};
 
 int main() {
 

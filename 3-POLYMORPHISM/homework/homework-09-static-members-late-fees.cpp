@@ -23,7 +23,9 @@ using namespace std;
 
 class LibraryItem {
     public:
-        LibraryItem(const string& title) : title(title) {}
+        LibraryItem(const string& title) : title(title) {
+            totalItems++;
+        }
 
         virtual double calculateLateFee(int daysLate) const = 0;
 
@@ -49,7 +51,6 @@ class Book : public LibraryItem {
         Book(const string& title, const string& author) : LibraryItem(title), author(author) {
             // Increment the totalItems count for each book added.
             // Hint: Use the static member of the LibraryItem class.
-            totalItems++;
         }
 
         double calculateLateFee(int daysLate) const override {
@@ -71,12 +72,11 @@ class DVD : public LibraryItem {
         DVD(const string& title, int duration) : LibraryItem(title), duration(duration) {
             // Increment the totalItems count for each DVD added.
             // Hint: Use the static member of the LibraryItem class.
-            totalItems++;
         }
 
         double calculateLateFee(int daysLate) const override {
             // Implement the late fee calculation for DVDs.
-            return daysLate*0.5
+            return daysLate*0.5;
         }
 
         void displayInfo() const override {

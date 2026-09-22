@@ -23,11 +23,13 @@ class Authenticator {
     public:
         // TODO: Declare a pure virtual function for authentication
         virtual bool authenticate(const string& username, const string& password) const = 0;
+        
+        virtual ~Authenticator(){}
 };
 
 
 // TODO: Decide whether to mark the following class as final or not
-class BasicAuthenticator : public Authenticator {
+class BasicAuthenticator final : public Authenticator {
     public:
         BasicAuthenticator(const string& validUsername, const string& validPassword)
             : validUsername_(validUsername), validPassword_(validPassword) {}

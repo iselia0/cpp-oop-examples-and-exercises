@@ -34,6 +34,82 @@ using namespace std;
     Solution
 */ 
 
+class User{
+    protected:
+        string username;
+
+    public:
+        User(string username):username(username){}
+
+        virtual void login(){
+            cout<<username<<" logged in"<<endl;
+        }
+
+        virtual void logout(){
+            cout<<username<<" logged out"<<endl;
+        }
+
+        virtual void action(){
+            cout<<username<<"action"<<endl;
+        }
+
+        virtual void viewProfile(){
+            cout<<"Viewing the profile of "<<username<<endl;
+        }
+
+        virtual ~User(){}
+};
+
+class SiteUser : public User{
+    public:
+        SiteUser(string username) : User(username){}
+
+        void action() override{
+            cout<<username<<" is browsing"<<endl;
+        }
+
+        virtual void postComment(){
+            cout<<username<<" commented"<<endl;
+        }
+};
+
+class AdminUser : public SiteUser{
+    public:
+        AdminUser(string username) : SiteUser(username){}
+
+        void action() override{
+            cout<<username<<" administrative"<<endl;
+        }
+};
+
+
+class ModeratorUser : public AdminUser{
+    public:
+        ModeratorUser(string username) : AdminUser(username){}
+
+        void action() override{
+            cout<<username<<" is moderating the site."<<endl;
+        }
+
+        virtual void moderateContent(){
+            cout<<"Content moderated by "<<username<<endl;
+        }
+};
+
+
+class ManagerUser : public AdminUser{
+    public:
+        ManagerUser(string username) : AdminUser(username){}
+
+        void action() override{
+            cout<<username<<" managing the platform."<<endl;
+        }
+
+        virtual void manageUsers(){
+            cout<<"Users managed by "<<username<<endl;
+        }
+};
+
 
 
 int main() {
